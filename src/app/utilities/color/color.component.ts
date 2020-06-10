@@ -14,9 +14,15 @@ export class ColorComponent implements OnInit {
 
   ngOnInit(): void {
     // this.type = this.route.snapshot.params['type'];
+
     // this.type = this.route.snapshot.paramMap.get('type');
+    // this.type = this.route.snapshot.queryParamMap.get('type');
 
     this.route.paramMap.subscribe(paramMap => {
+      this.type = paramMap.get('type');
+    });
+
+    this.route.queryParamMap.subscribe(paramMap => {
       this.type = paramMap.get('type');
     });
 
