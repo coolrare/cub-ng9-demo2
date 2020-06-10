@@ -5,11 +5,20 @@ import { Page2Component } from './page2/page2.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TablesComponent } from './tables/tables.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ColorComponent } from './utilities/color/color.component';
+import { BorderComponent } from './utilities/border/border.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'tables', component: TablesComponent },
+  {
+    path: 'utilities',
+    children: [
+      { path: 'color', component: ColorComponent },
+      { path: 'border', component: BorderComponent }
+    ]
+  },
   { path: 'page1', component: Page1Component },
   { path: 'page2', component: Page2Component },
   { path: '**', component: NotFoundComponent }
