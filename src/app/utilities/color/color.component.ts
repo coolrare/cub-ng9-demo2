@@ -19,11 +19,15 @@ export class ColorComponent implements OnInit {
     // this.type = this.route.snapshot.queryParamMap.get('type');
 
     this.route.paramMap.subscribe(paramMap => {
-      this.type = paramMap.get('type');
+      if (paramMap.get('type')) {
+        this.type = paramMap.get('type');
+      }
     });
 
     this.route.queryParamMap.subscribe(paramMap => {
-      this.type = paramMap.get('type');
+      if (paramMap.get('type')) {
+        this.type = paramMap.get('type');
+      }
     });
 
   }
