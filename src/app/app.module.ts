@@ -10,6 +10,7 @@ import { TablesComponent } from './tables/tables.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ColorComponent } from './utilities/color/color.component';
 import { BorderComponent } from './utilities/border/border.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BorderComponent } from './utilities/border/border.component';
     TablesComponent,
     NotFoundComponent,
     ColorComponent,
-    BorderComponent
+    BorderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
