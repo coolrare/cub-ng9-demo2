@@ -10,9 +10,11 @@ import { BorderComponent } from './utilities/border/border.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
+import { Login2Component } from './login2/login2.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'login2', component: Login2Component },
   { path: '', component: LayoutComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
