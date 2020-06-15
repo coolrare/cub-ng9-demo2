@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  data = {
+  data: LoginViewModel = {
     email: 'doggy.huang@gmail.com',
     password: '123123',
     isRememberMe: true
@@ -34,4 +34,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
+}
+
+export interface LoginViewModel {
+  email: string;
+  password: string;
+  isRememberMe: boolean;
 }
