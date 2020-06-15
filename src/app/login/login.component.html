@@ -15,8 +15,19 @@
                 <form class="user">
                   <div class="form-group">
                     <input type="email" class="form-control form-control-user"
-                      name="email" [(ngModel)]="data.email" #tEmail="ngModel"
+                      [class.is-invalid]="tEmail.invalid"
+                      name="email" [(ngModel)]="data.email" #tEmail="ngModel" required email
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
+<pre>tEmail.value = {{tEmail.value}}
+tEmail.valid = {{tEmail.valid}}
+tEmail.invalid = {{tEmail.invalid}}
+tEmail.pristine = {{tEmail.pristine}}
+tEmail.dirty = {{tEmail.dirty}}
+tEmail.touched = {{tEmail.touched}}
+tEmail.untouched = {{tEmail.untouched}}
+tEmail.enabled = {{tEmail.enabled}}
+tEmail.disabled = {{tEmail.disabled}}
+tEmail.errors = {{tEmail.errors | json}}</pre>
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control form-control-user"
