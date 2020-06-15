@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     document.body.className = this.origClassName;
+  }
+
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      // TODO
+      // this.http.post('/api/save', this.data).subscribe(result => {  });
+    }
   }
 
 }

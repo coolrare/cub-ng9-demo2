@@ -12,14 +12,14 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
-                <form class="user">
+                <form class="user" #form="ngForm" (ngSubmit)="onSubmit(form)">
                   <div class="form-group">
                     <input type="email" class="form-control form-control-user"
-                      [class.is-invalid]="tEmail.invalid"
+                      [class.is-invalid]="form.submitted && tEmail.invalid"
                       name="email" [(ngModel)]="data.email" #tEmail="ngModel" required email
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
-                    <div class="invalid-feedback" *ngIf="tEmail.errors?.required">請輸入 E-mail 地址</div>
-                    <div class="invalid-feedback" *ngIf="tEmail.errors?.email">請輸入合法的 E-mail 地址</div>
+                    <div class="invalid-feedback" *ngIf="form.submitted && tEmail.errors?.required">請輸入 E-mail 地址</div>
+                    <div class="invalid-feedback" *ngIf="form.submitted && tEmail.errors?.email">請輸入合法的 E-mail 地址</div>
 <pre>tEmail.value = {{tEmail.value}}
 tEmail.valid = {{tEmail.valid}}
 tEmail.invalid = {{tEmail.invalid}}
@@ -43,7 +43,7 @@ tEmail.errors = {{tEmail.errors | json}}</pre>
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <a href="index.html" class="btn btn-primary btn-user btn-block"> Login </a>
+                  <button class="btn btn-primary btn-user btn-block"> Login </button>
                   <hr>
                   <a href="index.html" class="btn btn-google btn-user btn-block">
                     <i class="fab fa-google fa-fw"></i> Login with Google </a>
