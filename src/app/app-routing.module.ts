@@ -9,10 +9,12 @@ import { ColorComponent } from './utilities/color/color.component';
 import { BorderComponent } from './utilities/border/border.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'layout', component: LayoutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'tables', component: TablesComponent },
   {
