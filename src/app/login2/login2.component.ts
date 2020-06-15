@@ -26,14 +26,16 @@ export class Login2Component implements OnInit, OnDestroy {
     document.body.className = 'bg-gradient-primary';
 
     this.form = this.fb.group({
-      email: ['doggy.huang@gmail.com', [
+      email: ['', [
         Validators.required, Validators.email
       ]],
-      password: ['123123', [
+      password: ['', [
         Validators.required, Validators.minLength(3)
       ]],
-      isRememberMe: true
-    })
+      isRememberMe: false
+    });
+
+    this.resetForm();
 
   }
 
@@ -45,8 +47,13 @@ export class Login2Component implements OnInit, OnDestroy {
     console.log(form);
     if (form.valid) {
       // TODO
-      // this.http.post('/api/save', this.data).subscribe(result => {  });
+      // this.http.post('/api/save', this.form.value).subscribe(result => {  });
     }
+  }
+
+  resetForm() {
+    console.log(this.data);
+    this.form.reset(this.data);
   }
 
 
