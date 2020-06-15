@@ -18,6 +18,8 @@
                       [class.is-invalid]="tEmail.invalid"
                       name="email" [(ngModel)]="data.email" #tEmail="ngModel" required email
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                    <div class="invalid-feedback" *ngIf="tEmail.errors?.required">請輸入 E-mail 地址</div>
+                    <div class="invalid-feedback" *ngIf="tEmail.errors?.email">請輸入合法的 E-mail 地址</div>
 <pre>tEmail.value = {{tEmail.value}}
 tEmail.valid = {{tEmail.valid}}
 tEmail.invalid = {{tEmail.invalid}}
