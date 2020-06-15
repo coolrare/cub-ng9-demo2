@@ -7,6 +7,7 @@ import { TablesComponent } from './tables/tables.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ColorComponent } from './utilities/color/color.component';
 import { BorderComponent } from './utilities/border/border.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -22,7 +23,7 @@ const routes: Routes = [
   },
   { path: 'page1', component: Page1Component },
   { path: 'page2', component: Page2Component },
-  { path: 'pages',
+  { path: 'pages', canActivate: [AuthGuard],
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
   },
   { path: '**', component: NotFoundComponent }
