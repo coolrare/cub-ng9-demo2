@@ -12,25 +12,28 @@ import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'layout', component: LayoutComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'tables', component: TablesComponent },
-  {
-    path: 'utilities',
+  { path: '', component: LayoutComponent,
     children: [
-      { path: 'color', component: ColorComponent },
-      { path: 'color/:type', component: ColorComponent },
-      { path: 'border', component: BorderComponent }
+      { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'tables', component: TablesComponent },
+      {
+        path: 'utilities',
+        children: [
+          { path: 'color', component: ColorComponent },
+          { path: 'color/:type', component: ColorComponent },
+          { path: 'border', component: BorderComponent }
+        ]
+      },
+      { path: 'page1', component: Page1Component },
+      { path: 'page2', component: Page2Component },
+      { path: 'pages', canActivate: [AuthGuard],
+        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+      },
+      { path: '**', component: NotFoundComponent }
     ]
   },
-  { path: 'page1', component: Page1Component },
-  { path: 'page2', component: Page2Component },
-  { path: 'pages', canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
-  },
-  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
