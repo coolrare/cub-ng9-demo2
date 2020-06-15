@@ -12,22 +12,38 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
-                <form class="user">
+                <form class="user" [formGroup]="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
                   <div class="form-group">
                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                           formControlName="email"
+                           [class.is-invalid]="f.submitted && form.get('email').invalid"
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                    <div class="invalid-feedback" *ngIf="f.submitted && form.get('email').errors?.required">請輸入 E-mail 地址</div>
+                    <div class="invalid-feedback" *ngIf="f.submitted && form.get('email').errors?.email">請輸入合法的 E-mail 地址</div>
+<pre>form.get('email').value = {{form.get('email').value}}
+form.get('email').valid = {{form.get('email').valid}}
+form.get('email').invalid = {{form.get('email').invalid}}
+form.get('email').pristine = {{form.get('email').pristine}}
+form.get('email').dirty = {{form.get('email').dirty}}
+form.get('email').touched = {{form.get('email').touched}}
+form.get('email').untouched = {{form.get('email').untouched}}
+form.get('email').enabled = {{form.get('email').enabled}}
+form.get('email').disabled = {{form.get('email').disabled}}
+form.get('email').errors = {{form.get('email').errors | json}}</pre>
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control form-control-user" id="exampleInputPassword"
+                    formControlName="password"
                            placeholder="Password">
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small">
-                      <input type="checkbox" class="custom-control-input" id="customCheck">
+                      <input type="checkbox" class="custom-control-input"
+                      formControlName="isRememberMe" id="customCheck">
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <a href="index.html" class="btn btn-primary btn-user btn-block"> Login </a>
+                  <button class="btn btn-primary btn-user btn-block"> Login </button>
                   <hr>
                   <a href="index.html" class="btn btn-google btn-user btn-block">
                     <i class="fab fa-google fa-fw"></i> Login with Google </a>
