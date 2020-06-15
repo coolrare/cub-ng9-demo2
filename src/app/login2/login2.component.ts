@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoginViewModel } from '../login/login.component';
-import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 
 @Component({
   selector: 'app-login2',
@@ -41,7 +41,8 @@ export class Login2Component implements OnInit, OnDestroy {
     document.body.className = this.origClassName;
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(form: FormGroupDirective) {
+    console.log(form);
     if (form.valid) {
       // TODO
       // this.http.post('/api/save', this.data).subscribe(result => {  });
