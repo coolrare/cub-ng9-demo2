@@ -1,14 +1,18 @@
 export function chartAreaDemo() {
-  (Chart.defaults.global.defaultFontFamily = 'Nunito'),
-    '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+  Chart.defaults.global.defaultFontFamily = 'Nunito,-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
   Chart.defaults.global.defaultFontColor = '#858796';
-  function number_format(number, decimals?, dec_point?, thousands_sep?) {
+  function number_format(num, decimals?, decPoint?, thousandsSep?) {
     // *     example: number_format(1234.56, 2, ',', ' ');
     // *     return: '1 234,56'
-    number = (number + '').replace(',', '').replace(' ', '');
-    var n = !isFinite(+number) ? 0 : +number, prec = !isFinite(+decimals) ? 0 : Math.abs(decimals), sep = typeof thousands_sep === 'undefined' ? ',' : thousands_sep, dec = typeof dec_point === 'undefined' ? '.' : dec_point, s: any = '', toFixedFix = function (n, prec) {
-      var k = Math.pow(10, prec);
-      return '' + Math.round(n * k) / k;
+    num = (num + '').replace(',', '').replace(' ', '');
+    const n = !isFinite(+num) ? 0 : +num;
+    const prec = !isFinite(+decimals) ? 0 : Math.abs(decimals);
+    const sep = typeof thousandsSep === 'undefined' ? ',' : thousandsSep;
+    const dec = typeof decPoint === 'undefined' ? '.' : decPoint;
+    let s: any = ''
+    const toFixedFix = (n2: number, prec2: number) => {
+      const k = Math.pow(10, prec2);
+      return '' + Math.round(n2 * k) / k;
     };
     // Fix for IE parseFloat(0.55).toFixed(0) = 0;
     s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
@@ -22,8 +26,8 @@ export function chartAreaDemo() {
     return s.join(dec);
   }
   // Area Chart Example
-  var ctx = document.getElementById('myAreaChart');
-  var myLineChart = new Chart(ctx, {
+  const ctx = document.getElementById('myAreaChart');
+  const myLineChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: [
@@ -102,7 +106,7 @@ export function chartAreaDemo() {
               maxTicksLimit: 5,
               padding: 10,
               // Include a dollar sign in the ticks
-              callback: function (value, index, values) {
+              callback (value, index, values) {
                 return '$' + number_format(value);
               }
             },
@@ -134,8 +138,8 @@ export function chartAreaDemo() {
         mode: 'index',
         caretPadding: 10,
         callbacks: {
-          label: function (tooltipItem, chart) {
-            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          label (tooltipItem, chart) {
+            const datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
             return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
           }
         }
