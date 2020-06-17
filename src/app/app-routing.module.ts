@@ -11,9 +11,10 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { Login2Component } from './login2/login2.component';
+import { PreventLeaveGuard } from './prevent-leave.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canDeactivate: [PreventLeaveGuard] },
   { path: 'login2', component: Login2Component },
   { path: '', component: LayoutComponent,
     children: [

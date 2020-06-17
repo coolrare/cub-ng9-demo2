@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,12 +9,14 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit, OnDestroy {
 
   data: LoginViewModel = {
-    email: 'doggy.huang@gmail.com',
-    password: '123123',
+    email: '',
+    password: '',
     isRememberMe: true
   };
 
   origClassName: string;
+
+  @ViewChild('form') f: NgForm;
 
   constructor() { }
 
